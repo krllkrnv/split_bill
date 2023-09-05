@@ -60,7 +60,7 @@ export default {
             this.dishes.forEach(function (currentDish) {
                 currentDish.consumers.forEach(function (currentConsumer) {
                     if (currentConsumer.customerID !== currentDish.payer.customerID) {
-                        if (currentConsumer.mustPayTo.map(obj => Object.values(obj)).flat().includes(currentDish.payer.customerID)) {
+                        if (currentConsumer.mustPayTo.map(obj => Object.values(obj)).flat().includes(currentDish.payer.name)) {
                             let obj = currentConsumer.mustPayTo.find((o, i) => {
                                 if (o.nameToPay === currentDish.payer.name) {
                                     currentConsumer.mustPayTo[i] = {
@@ -88,7 +88,7 @@ export default {
             this.customers.forEach((objA, indexA) => {
                 this.customers.forEach((objB, indexB) => {
                     if (indexA !== indexB) {
-                        if (objA.mustPayTo.map(obj => Object.values(obj)).flat().includes(objB.customerID) && objB.mustPayTo.map(obj => Object.values(obj)).flat().includes(objA.customerID)) { // чекать содержание
+                        if (objA.mustPayTo.map(obj => Object.values(obj)).flat().includes(objB.name) && objB.mustPayTo.map(obj => Object.values(obj)).flat().includes(objA.name)) {  
                             let payIndexA = objA.mustPayTo.findIndex(obj => obj.nameToPay === objB.name);
                             let payIndexB = objB.mustPayTo.findIndex(obj => obj.nameToPay === objA.name);
                             if (objA.mustPayTo[payIndexA].priceToPay > objB.mustPayTo[payIndexB].priceToPay) {
