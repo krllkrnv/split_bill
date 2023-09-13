@@ -53,7 +53,7 @@ export default {
       this.$store.commit('SET_TOTAL', summary);
 
     },
-    countTotal() { // пофиксил каку
+    countTotal() {
       this.countPrice();
       this.customers.forEach(function (currentCustomer) {
         currentCustomer.mustPayTo = []
